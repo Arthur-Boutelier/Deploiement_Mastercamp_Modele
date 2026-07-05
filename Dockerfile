@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /code
 
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY requirements-gpu.txt .
+RUN pip install --upgrade pip && pip install -r requirements-gpu.txt
 
 COPY app ./app
 
