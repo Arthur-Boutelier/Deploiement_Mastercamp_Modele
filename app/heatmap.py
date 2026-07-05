@@ -19,7 +19,7 @@ import matplotlib
 matplotlib.use("Agg")
 matplotlib.colormaps  # force l'initialisation du registre de palettes
 
-from .. import config
+from . import config
 
 
 def generer_heatmap(modele, image, vue, sexe, age, score_baseline):

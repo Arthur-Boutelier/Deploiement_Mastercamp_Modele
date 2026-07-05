@@ -13,7 +13,7 @@ import logging
 
 from fastapi import FastAPI, File, Form, UploadFile, HTTPException
 
-from .. import config
+from . import config
 from .model import modele
 from .preprocessing import pretraiter_image, charger_image_depuis_octets
 from .heatmap import generer_heatmap

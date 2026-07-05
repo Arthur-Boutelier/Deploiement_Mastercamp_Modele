@@ -9,7 +9,7 @@ de `pretraiter_image` a ta chaine de nettoyage reelle.
 
 from PIL import Image
 
-from .. import config
+from . import config
 
 
 def pretraiter_image(image):

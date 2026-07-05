@@ -5,7 +5,7 @@ et calcul du score d'anomalie.
 
 import torch
 
-from .. import config
+from . import config
 
 
 class ModeleRadio:
