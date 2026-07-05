@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /code
 
 COPY requirements-gpu.txt .
-RUN pip install --upgrade pip
 RUN pip install fastapi "uvicorn[standard]" python-multipart pillow "numpy<2" matplotlib pydantic
 RUN pip install unsloth==2026.6.9
 RUN pip install unsloth_zoo==2026.6.7
