@@ -1,0 +1,33 @@
+# Environnement virtuel Python
+venv/
+.venv/
+env/
+
+# Fichiers compiles Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Variables d'environnement et secrets
+.env
+*.env
+
+# Fichiers systeme et editeur
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Modeles et images volumineux (a ne pas versionner)
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.jpg
+*.jpeg
+*.png
+
+# Fichiers temporaires et journaux
+*.log
+*.tmp
+heatmap
