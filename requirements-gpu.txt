@@ -1,11 +1,23 @@
 # torch est fourni par l'image de base (pytorch 2.10.0 cuda12.8)
+<<<<<<< HEAD
 # transformers, accelerate et bitsandbytes sont geres par unsloth
+=======
+>>>>>>> f36d20410f0883c46b181dff6e4e999f13b96b11
 fastapi
 uvicorn[standard]
 python-multipart
 pillow
+<<<<<<< HEAD
 numpy<2
 matplotlib
 pydantic
+=======
+numpy
+matplotlib
+pydantic
+transformers==5.5.0
+accelerate
+bitsandbytes
+>>>>>>> f36d20410f0883c46b181dff6e4e999f13b96b11
 unsloth==2026.6.9
 unsloth_zoo==2026.6.7
