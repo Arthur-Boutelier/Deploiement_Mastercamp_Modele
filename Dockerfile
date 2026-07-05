@@ -1,12 +1,4 @@
-# =====================================================================
-# Image Docker pour le deploiement sur Azure
-# =====================================================================
-# Pour une inference GPU (recommande), utilise une image de base CUDA :
-#   FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
-# et installe Python par-dessus. L'image ci-dessous cible un deploiement
-# CPU par defaut, plus simple mais nettement plus lent pour Gemma.
-
-FROM python:3.11-slim
+FROM pytorch/pytorch:2.10.0-cuda12.8-cudnn9-runtime
 
 ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
