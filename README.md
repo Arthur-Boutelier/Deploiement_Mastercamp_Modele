@@ -16,17 +16,6 @@ requirements.txt
 Dockerfile
 ```
 
-## Fonctionnement
-
-- La détection d'anomalie repose sur la stratégie validée en évaluation : `anomalie = 1 - P(image normale)`, avec un seuil calibré au point de fonctionnement haute sensibilité.
-- La heatmap masque successivement chaque région de l'image et mesure la baisse du score d'anomalie. Les régions dont l'occultation fait le plus chuter le score sont surlignées.
-
-## Points à adapter avant la mise en production
-
-- **`config.MODELE_ID`** : renseigne le dépôt ou le chemin de ton modèle fine-tuné.
-- **`config.SEUIL_ANOMALIE`** : reporte la valeur exacte issue de ta calibration.
-- **`preprocessing.pretraiter_image`** : reproduis fidèlement le nettoyage utilisé pour générer tes images `_cleaned`. C'est la cause première d'écart de performance entre l'entraînement et l'API.
-
 ## Lancement en local
 
 ```bash
@@ -46,32 +35,6 @@ curl -X POST "http://localhost:8000/predict" \
   -F "sexe=M" \
   -F "inclure_heatmap=true"
 ```
-
-## Déploiement sur Azure
-
-L'inférence Gemma requiert idéalement un GPU. Trois options adaptées :
-
-- **Azure Container Apps** (avec profil GPU) : construire l'image, la pousser sur Azure Container Registry, puis créer une application conteneur.
-- **Azure Machine Learning - Managed Online Endpoint** : solution native pour servir un modèle sur GPU, avec mise à l'échelle gérée.
-- **Azure Container Instances (ACI)** avec GPU : plus simple, adapté à une démonstration.
-
-Exemple avec Azure Container Registry et Container Apps :
-
-```bash
-# 1. Construire et pousser l'image
-az acr build --registry MonRegistre --image xray-api:latest .
-
-# 2. Deployer sur Azure Container Apps
-az containerapp create \
-  --name xray-api \
-  --resource-group MonGroupe \
-  --image MonRegistre.azurecr.io/xray-api:latest \
-  --target-port 8000 \
-  --ingress external \
-  --cpu 4 --memory 16Gi
-```
-
-Pour un déploiement CPU (démonstration lente), l'image Docker fournie fonctionne telle quelle. Pour un déploiement GPU, remplace la ligne `FROM` du Dockerfile par une image de base CUDA et installe `torch` avec le support GPU correspondant.
 
 ## Avertissement
 
